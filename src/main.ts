@@ -1,53 +1,76 @@
+import camera from "@/components/MainCamera";
+import { renderer, scene } from "@/components/MainScene";
+import getParticle from "@/components/ParticleFactory";
+import { deltaTime, tick } from "@/components/Time";
+import "@/style.css";
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import Body from "./classes/Body";
+import { degToRad } from "three/src/math/MathUtils";
 
-let time = 0;
-let deltaTime = 0;
+const up = new THREE.Vector3(0, 1, 0);
+const shellDistance = [3, 6];
+const spacing = [180, 60];
+const offsets = [30, 0];
+const shellResloution = 100;
+const nucleus = [
+	getParticle("proton", new THREE.Vector3(0, 0, 0)),
+	getParticle("proton", new THREE.Vector3(0.5, 0, 0)),
+	getParticle("proton", new THREE.Vector3(-0.5, 0, 0)),
+	getParticle("proton", new THREE.Vector3(-0.25, 0, 0.5)),
+	getParticle("proton", new THREE.Vector3(-0.5, 0.4, -0.25)),
+	getParticle("proton", new THREE.Vector3(0.25, 0.4, 0.25)),
+	getParticle("neutorn", new THREE.Vector3(0.25, 0, 0.5)),
+	getParticle("neutorn", new THREE.Vector3(0.25, 0, -0.5)),
+	getParticle("neutorn", new THREE.Vector3(-0.25, 0.4, 0.25)),
+	getParticle("neutorn", new THREE.Vector3(0, 0.4, -0.25)),
+	getParticle("neutorn", new THREE.Vector3(0.5, 0.4, -0.25)),
+	getParticle("neutorn", new THREE.Vector3(-0.25, 0, -0.5)),
+];
+const shells = [
+	[getParticle("electron"), getParticle("electron")],
+	[
+		getParticle("electron"),
+		getParticle("electron"),
+		getParticle("electron"),
+		getParticle("electron"),
+		getParticle("electron"),
+		getParticle("electron"),
+	],
+];
 
-//#region initialization
-const canvas = <HTMLCanvasElement>document.getElementById("canvas");
-const scene = new THREE.Scene();
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(window.devicePixelRatio);
-window.addEventListener("resize", () => {
-	renderer.setSize(window.innerWidth, window.innerHeight);
-	camera.aspect = window.innerWidth / window.innerHeight;
-	camera.updateProjectionMatrix();
-});
-//#endregion
+for (let i = 0; i < shells.length; i++) {
+	const points = [];
+	const step = (2 * Math.PI) / shellResloution;
+	for (let j = 0; j < shellResloution; j++)
+		points.push(new THREE.Vector3(1, 0, 0).applyAxisAngle(up, step * j).multiplyScalar(shellDistance[i]));
 
-//#region camera
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
-const controls = new OrbitControls(camera, canvas);
-camera.position.set(0, 10, 3);
-camera.lookAt(0, 0, 0);
-//#endregion
+	const shellGeomentry = new THREE.BufferGeometry().setFromPoints(points);
+	const shellMaterial = new THREE.LineBasicMaterial({ color: 0xdddddd });
+	const line = new THREE.LineLoop(shellGeomentry, shellMaterial);
+	scene.add(line);
 
-//#region placeholder scene setup
-const grid = new THREE.GridHelper();
-const primaryLight = new THREE.HemisphereLight(0xffffff, 0xaaaaaa);
-primaryLight.position.set(0, 2, 1);
+	for (let j = 0; j < shells[i].length; j++) {
+		shells[i][j].userData.distance = shellDistance[i];
+		shells[i][j].position.copy(
+			shells[i][j].userData.dir
+				.set(1, 0, 0)
+				.applyAxisAngle(up, degToRad(offsets[i] + spacing[i] * j))
+				.multiplyScalar(shells[i][j].userData.distance)
+		);
+		scene.add(shells[i][j]);
+	}
+}
 
-const b1 = new Body(new THREE.Vector3(0, 0, 0), 0.5, 10000, new THREE.Vector3(0, 0, 0), new THREE.Vector3());
-const b2 = new Body(new THREE.Vector3(3, 0, 0), 0.1, 1, new THREE.Vector3(0, 0, 50), new THREE.Vector3());
-const b3 = new Body(new THREE.Vector3(-3, 0, 0), 0.1, 1, new THREE.Vector3(0, 0, -50), new THREE.Vector3());
+for (let i = 0; i < nucleus.length; i++) scene.add(nucleus[i]);
 
-Body.bodies.forEach(body => scene.add(body));
-scene.add(grid);
-scene.add(primaryLight);
-//#endregion
-
-//#region render loop
 function draw() {
 	requestAnimationFrame(draw);
-	deltaTime = performance.now() * 0.001 - time;
-	time = performance.now() * 0.001;
+	tick();
 
-	Body.bodies.forEach(body => body.updateVelocity());
-	Body.bodies.forEach(body => body.updatePosition());
+	for (let i = 0; i < shells.length; i++)
+		for (let j = 0; j < shells[i].length; j++) {
+			shells[i][j].userData.dir.applyAxisAngle(up, degToRad(-10 * deltaTime));
+			shells[i][j].position.copy(shells[i][j].userData.dir);
+		}
 	renderer.render(scene, camera);
 }
 draw();
-//#endregion render loop
