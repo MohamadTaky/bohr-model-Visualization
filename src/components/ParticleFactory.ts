@@ -9,11 +9,11 @@ export type Electron = THREE.Mesh & {
 
 const particles = {
 	proton: {
-		radius: 0.5,
+		radius: 0.3,
 		color: 0xdc2626,
 	},
 	neutorn: {
-		radius: 0.5,
+		radius: 0.3,
 		color: 0x16a34a,
 	},
 	electron: {
