@@ -22,7 +22,7 @@ const particles = {
 	},
 };
 
-export default function getParticle<
+export default function generateParticle<
 	T extends keyof typeof particles,
 	R = T extends "electron" ? Electron : THREE.Mesh,
 >(type: T, position = new THREE.Vector3()) {
