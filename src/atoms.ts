@@ -1,6 +1,5 @@
-import generateParticle from "./components/generateParticle";
+import generateParticle from "./utils/generateParticle";
 import * as THREE from "three";
-
 const atoms = [
 	{
 		nucleus: [
