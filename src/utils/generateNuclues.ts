@@ -1,6 +1,6 @@
 import * as atoms from "@/atoms.json";
 import * as THREE from "three";
-import generateParticle from "../utils/generateParticle";
+import generateParticle, { Particle } from "@/utils/generateParticle";
 
 export default function generateNucleus(atom: keyof typeof atoms) {
 	const atomConfig = atoms[atom];
@@ -8,16 +8,20 @@ export default function generateNucleus(atom: keyof typeof atoms) {
 	let k = 100;
 
 	const zeroVector = new THREE.Vector3();
-	const nucleus: THREE.Mesh[] = [];
+	const nucleus: Particle[] = [];
 	const l = 0.3;
 	const repulsiveConstant = 1;
-	const springConstant = 30;
+	const springConstant = 15;
 	const coolDownFactor = 0.01;
 
 	for (let i = 0; i < atomConfig.atomic_number; i++)
-		nucleus.push(generateParticle("proton", new THREE.Vector3().randomDirection().multiplyScalar(5)));
+		nucleus.push(
+			generateParticle("proton", new THREE.Vector3().randomDirection().multiplyScalar(Math.random() * 5))
+		);
 	for (let i = 0; i < Math.floor(atomConfig.atomic_mass - atomConfig.atomic_number); i++)
-		nucleus.push(generateParticle("neutorn", new THREE.Vector3().randomDirection().multiplyScalar(5)));
+		nucleus.push(
+			generateParticle("neutorn", new THREE.Vector3().randomDirection().multiplyScalar(Math.random() * 5))
+		);
 
 	while (t < k) {
 		const forces = [];

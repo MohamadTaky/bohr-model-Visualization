@@ -1,6 +1,12 @@
 import * as THREE from "three";
 
-export type Electron = THREE.Mesh & {
+export type Particle<T = "electron" | "proton" | "neutorn"> = THREE.Mesh & {
+	userData: {
+		type: T;
+	};
+};
+
+export type Electron = Particle<"electron"> & {
 	userData: {
 		distance: number;
 		dir: THREE.Vector3;
@@ -9,22 +15,22 @@ export type Electron = THREE.Mesh & {
 
 const particles = {
 	proton: {
-		radius: 0.3,
+		radius: 0.4,
 		color: 0xdc2626,
 	},
 	neutorn: {
-		radius: 0.3,
+		radius: 0.4,
 		color: 0x16a34a,
 	},
 	electron: {
-		radius: 0.1,
+		radius: 0.2,
 		color: 0x2563eb,
 	},
 };
 
 export default function generateParticle<
 	T extends keyof typeof particles,
-	R = T extends "electron" ? Electron : THREE.Mesh,
+	R = T extends "electron" ? Electron : Particle<T>,
 >(type: T, position = new THREE.Vector3()) {
 	const geomentry = new THREE.SphereGeometry(particles[type].radius);
 	const material = new THREE.MeshStandardMaterial({ color: particles[type].color });
@@ -35,6 +41,5 @@ export default function generateParticle<
 	}
 
 	mesh.position.copy(position);
-
 	return mesh as R;
 }
