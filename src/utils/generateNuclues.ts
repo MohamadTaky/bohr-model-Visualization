@@ -1,49 +1,72 @@
 import * as atoms from "@/atoms.json";
-import * as THREE from "three";
+import { ZERO } from "@/constants";
 import generateParticle, { Particle } from "@/utils/generateParticle";
+import * as THREE from "three";
 
-export default function generateNucleus(atom: keyof typeof atoms) {
-	const atomConfig = atoms[atom];
-	let t = 1;
-	let k = 100;
+export default function generateNucleus(
+  atom: keyof typeof atoms,
+  iterations = 100,
+  l = 0.3,
+  repulsiveConstant = 1,
+  springConstant = 15,
+  coolDownFactor = 0.01,
+) {
+  const atomConfig = atoms[atom];
+  const nucleus: Particle[] = [];
 
-	const zeroVector = new THREE.Vector3();
-	const nucleus: Particle[] = [];
-	const l = 0.3;
-	const repulsiveConstant = 1;
-	const springConstant = 15;
-	const coolDownFactor = 0.01;
+  for (let i = 0; i < atomConfig.atomic_number; i++) {
+    const randomPosition = new THREE.Vector3().randomDirection().multiplyScalar(Math.random() * 5);
+    const proton = generateParticle("proton", randomPosition);
+    nucleus.push(proton);
+  }
 
-	for (let i = 0; i < atomConfig.atomic_number; i++)
-		nucleus.push(
-			generateParticle("proton", new THREE.Vector3().randomDirection().multiplyScalar(Math.random() * 5))
-		);
-	for (let i = 0; i < Math.floor(atomConfig.atomic_mass - atomConfig.atomic_number); i++)
-		nucleus.push(
-			generateParticle("neutorn", new THREE.Vector3().randomDirection().multiplyScalar(Math.random() * 5))
-		);
+  for (let i = 0; i < Math.floor(atomConfig.atomic_mass - atomConfig.atomic_number); i++) {
+    const randomPosition = new THREE.Vector3().randomDirection().multiplyScalar(Math.random() * 5);
+    const neutorn = generateParticle("neutorn", randomPosition);
+    nucleus.push(neutorn);
+  }
 
-	while (t < k) {
-		const forces = [];
-		for (let i = 0; i < nucleus.length; i++) {
-			const attractiveForce = new THREE.Vector3()
-				.copy(nucleus[i].position)
-				.negate()
-				.multiplyScalar(springConstant * Math.log(nucleus[i].position.distanceTo(zeroVector) / l));
+  for (let i = 0; i < iterations; i++) {
+    const forces = [];
+    for (let j = 0; j < nucleus.length; j++) {
+      const attractiveForce = calculateSpringForce(springConstant, l, nucleus[j].position, ZERO);
 
-			for (let j = 0; j < nucleus.length; j++) {
-				if (i === j) continue;
-				const repulsiveForce = new THREE.Vector3()
-					.subVectors(nucleus[i].position, nucleus[j].position)
-					.multiplyScalar(repulsiveConstant / nucleus[i].position.distanceToSquared(nucleus[j].position));
-				attractiveForce.add(repulsiveForce);
-			}
-			forces.push(attractiveForce);
-		}
+      for (let k = 0; k < nucleus.length; k++) {
+        if (j === k) continue;
+        const repulsiveForce = calculateRepulsiveForce(
+          repulsiveConstant,
+          nucleus[k].position,
+          nucleus[j].position,
+        );
+        attractiveForce.add(repulsiveForce);
+      }
+      forces.push(attractiveForce);
+    }
 
-		for (let i = 0; i < nucleus.length; i++)
-			nucleus[i].position.add(forces[i].multiplyScalar(coolDownFactor));
-		t++;
-	}
-	return nucleus;
+    for (let j = 0; j < nucleus.length; j++)
+      nucleus[j].position.add(forces[j].multiplyScalar(coolDownFactor));
+  }
+
+  return nucleus;
+}
+
+function calculateSpringForce(
+  springConstant: number,
+  l: number,
+  from: THREE.Vector3,
+  to: THREE.Vector3,
+) {
+  const displacement = new THREE.Vector3().subVectors(to, from);
+  const distance = displacement.length();
+  return displacement.multiplyScalar(springConstant * Math.log(distance / l));
+}
+
+function calculateRepulsiveForce(
+  repulsiveConstant: number,
+  from: THREE.Vector3,
+  to: THREE.Vector3,
+) {
+  const direction = new THREE.Vector3().subVectors(to, from);
+  const squaredDistance = direction.lengthSq();
+  return direction.multiplyScalar(repulsiveConstant / squaredDistance);
 }

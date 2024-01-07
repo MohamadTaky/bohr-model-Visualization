@@ -13,6 +13,7 @@ document.body.insertAdjacentHTML(
 );
 
 const timeScaleSlider = <HTMLInputElement>document.getElementById("timeScaleSlider");
+
 timeScaleSlider.addEventListener("input", e => {
 	if (!(e.target instanceof HTMLInputElement)) return;
 	timeScale = scales[+e.target.value];
