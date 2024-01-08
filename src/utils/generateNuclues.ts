@@ -15,13 +15,13 @@ export default function generateNucleus(
   const nucleus: Particle[] = [];
 
   for (let i = 0; i < atomConfig.atomic_number; i++) {
-    const randomPosition = new THREE.Vector3().randomDirection().multiplyScalar(Math.random() * 5);
+    const randomPosition = new THREE.Vector3().randomDirection().multiplyScalar(10);
     const proton = generateParticle("proton", randomPosition);
     nucleus.push(proton);
   }
 
   for (let i = 0; i < Math.floor(atomConfig.atomic_mass - atomConfig.atomic_number); i++) {
-    const randomPosition = new THREE.Vector3().randomDirection().multiplyScalar(Math.random() * 5);
+    const randomPosition = new THREE.Vector3().randomDirection().multiplyScalar(10);
     const neutorn = generateParticle("neutorn", randomPosition);
     nucleus.push(neutorn);
   }
@@ -58,7 +58,7 @@ function calculateSpringForce(
 ) {
   const displacement = new THREE.Vector3().subVectors(to, from);
   const distance = displacement.length();
-  return displacement.multiplyScalar(springConstant * Math.log(distance / l));
+  return displacement.normalize().multiplyScalar(springConstant * Math.log(distance / l));
 }
 
 function calculateRepulsiveForce(
@@ -66,7 +66,7 @@ function calculateRepulsiveForce(
   from: THREE.Vector3,
   to: THREE.Vector3,
 ) {
-  const direction = new THREE.Vector3().subVectors(to, from);
-  const squaredDistance = direction.lengthSq();
-  return direction.multiplyScalar(repulsiveConstant / squaredDistance);
+  const displacement = new THREE.Vector3().subVectors(to, from);
+  const squaredDistance = displacement.lengthSq();
+  return displacement.normalize().multiplyScalar(repulsiveConstant / squaredDistance);
 }
