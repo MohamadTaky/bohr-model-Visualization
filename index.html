@@ -1,13 +1,1122 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Bohr model simulation</title>
-	</head>
-	<body>
-		<canvas id="canvas"></canvas>
-		<script type="module" src="/src/main.ts"></script>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bohr model visualization</title>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <div class="mx-8 mt-4">
+      <button id="tableToggle">toggle periodic table</button>
+      <div data-visible="true" id="table" class="mt-8 mx-auto text-center hidden data-[visible='true']:block w-fit">
+        <div class="flex items-end gap-0.5">
+          <div>
+            <button data-element="hydrogen" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>1</span><span class="hidden group-hover:inline">1.0078</span>
+              </div>
+              <div>H</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Hydrogen
+              </div>
+            </button>
+            <button data-element="lithium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-cyan-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>3</span><span class="hidden group-hover:inline">6.9410</span>
+              </div>
+              <div>Li</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Lithium
+              </div>
+            </button>
+            <button data-element="sodium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-cyan-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>11</span><span class="hidden group-hover:inline">22.990</span>
+              </div>
+              <div>Na</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Sodium
+              </div>
+            </button>
+            <button data-element="potassium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-cyan-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>19</span><span class="hidden group-hover:inline">39.098</span>
+              </div>
+              <div>K</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Potassium
+              </div>
+            </button>
+            <button data-element="rubidium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-cyan-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>37</span><span class="hidden group-hover:inline">85.468</span>
+              </div>
+              <div>Rb</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Rubidium
+              </div>
+            </button>
+            <button data-element="cesium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-cyan-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>55</span><span class="hidden group-hover:inline">132.91</span>
+              </div>
+              <div>Cs</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Caesium
+              </div>
+            </button>
+            <button data-element="francium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-cyan-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>87</span><span class="hidden group-hover:inline">223</span>
+              </div>
+              <div>Fr</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Francium
+              </div>
+            </button>
+          </div>
+          <div>
+            <button data-element="beryllium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-red-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>4</span><span class="hidden group-hover:inline">9.0122</span>
+              </div>
+              <div>Be</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Beryllium
+              </div>
+            </button>
+            <button data-element="magnesium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-red-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>12</span><span class="hidden group-hover:inline">24.305</span>
+              </div>
+              <div>Mg</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Magnesium
+              </div>
+            </button>
+            <button data-element="calcium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-red-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>20</span><span class="hidden group-hover:inline">40.078</span>
+              </div>
+              <div>Ca</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Calcium
+              </div>
+            </button>
+            <button data-element="strontium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-red-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>38</span><span class="hidden group-hover:inline">87.620</span>
+              </div>
+              <div>Sr</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Strontium
+              </div>
+            </button>
+            <button data-element="barium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-red-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>56</span><span class="hidden group-hover:inline">137.33</span>
+              </div>
+              <div>Ba</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Barium
+              </div>
+            </button>
+            <button data-element="radium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-red-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>88</span><span class="hidden group-hover:inline">226</span>
+              </div>
+              <div>Ra</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Radium
+              </div>
+            </button>
+          </div>
+          <div class="mr-4">
+            <button data-element="scandium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>21</span><span class="hidden group-hover:inline">44.956</span>
+              </div>
+              <div>Sc</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Scandium
+              </div>
+            </button>
+            <button data-element="yttrium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>39</span><span class="hidden group-hover:inline">88.906</span>
+              </div>
+              <div>Y</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Yttrium
+              </div>
+            </button>
+            <button data-element="lanthanum" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-blue-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>57</span><span class="hidden group-hover:inline">88.906</span>
+              </div>
+              <div>La</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Lanthanum
+              </div>
+            </button>
+            <button data-element="actinium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-orange-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>89</span><span class="hidden group-hover:inline">227</span>
+              </div>
+              <div>Ac</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Actinium
+              </div>
+            </button>
+          </div>
+          <div>
+            <button data-element="titanium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>22</span><span class="hidden group-hover:inline">47.867</span>
+              </div>
+              <div>Ti</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Titanium
+              </div>
+            </button>
+            <button data-element="zirconium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>40</span><span class="hidden group-hover:inline">91.224</span>
+              </div>
+              <div>Zr</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Zirconium
+              </div>
+            </button>
+            <button data-element="hafnium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>72</span><span class="hidden group-hover:inline">178.49</span>
+              </div>
+              <div>Hf</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Hafnium
+              </div>
+            </button>
+            <button data-element="rutherfordium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>104</span><span class="hidden group-hover:inline">267</span>
+              </div>
+              <div>Rf</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Rutherfordium
+              </div>
+            </button>
+          </div>
+          <div>
+            <button data-element="vanadium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>23</span><span class="hidden group-hover:inline">50.942</span>
+              </div>
+              <div>V</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Vanadium
+              </div>
+            </button>
+            <button data-element="niobium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>41</span><span class="hidden group-hover:inline">92.906</span>
+              </div>
+              <div>Nb</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Niobium
+              </div>
+            </button>
+            <button data-element="tantalum" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>73</span><span class="hidden group-hover:inline">180.95</span>
+              </div>
+              <div>Ta</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Tantalum
+              </div>
+            </button>
+            <button data-element="dubnium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>105</span><span class="hidden group-hover:inline">262</span>
+              </div>
+              <div>Db</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Dubnium
+              </div>
+            </button>
+          </div>
+          <div>
+            <button data-element="chromium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>24</span><span class="hidden group-hover:inline">51.996</span>
+              </div>
+              <div>Cr</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Chromium
+              </div>
+            </button>
+            <button data-element="molybdenum" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>42</span><span class="hidden group-hover:inline">95.950</span>
+              </div>
+              <div>Mo</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Molybdenum
+              </div>
+            </button>
+            <button data-element="tungsten" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>74</span><span class="hidden group-hover:inline">183.84</span>
+              </div>
+              <div>W</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Tungsten
+              </div>
+            </button>
+            <button data-element="seaborgium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>106</span><span class="hidden group-hover:inline">269</span>
+              </div>
+              <div>Sg</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Seaborgium
+              </div>
+            </button>
+          </div>
+          <div>
+            <button data-element="manganese" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>25</span><span class="hidden group-hover:inline">54.938</span>
+              </div>
+              <div>Mn</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Manganese
+              </div>
+            </button>
+            <button data-element="technetium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>43</span><span class="hidden group-hover:inline">98</span>
+              </div>
+              <div>Tc</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Technetium
+              </div>
+            </button>
+            <button data-element="rhenium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>75</span><span class="hidden group-hover:inline">186.21</span>
+              </div>
+              <div>Re</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Rhenium
+              </div>
+            </button>
+            <button data-element="bohrium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>107</span><span class="hidden group-hover:inline">264</span>
+              </div>
+              <div>Bh</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Bohrium
+              </div>
+            </button>
+          </div>
+          <div>
+            <button data-element="iron" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>26</span><span class="hidden group-hover:inline">55.845</span>
+              </div>
+              <div>Fe</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Iron
+              </div>
+            </button>
+            <button data-element="ruthenium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>44</span><span class="hidden group-hover:inline">101.07</span>
+              </div>
+              <div>Ru</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Ruthenium
+              </div>
+            </button>
+            <button data-element="osmium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>76</span><span class="hidden group-hover:inline">190.23</span>
+              </div>
+              <div>Os</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Osmium
+              </div>
+            </button>
+            <button data-element="hassium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>108</span><span class="hidden group-hover:inline">269</span>
+              </div>
+              <div>Hs</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Hassium
+              </div>
+            </button>
+          </div>
+          <div>
+            <button data-element="cobalt" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>27</span><span class="hidden group-hover:inline">58.933</span>
+              </div>
+              <div>Co</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Cobalt
+              </div>
+            </button>
+            <button data-element="rhodium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>45</span><span class="hidden group-hover:inline">102.91</span>
+              </div>
+              <div>Rh</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Rhodium
+              </div>
+            </button>
+            <button data-element="iridium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>77</span><span class="hidden group-hover:inline">192.22</span>
+              </div>
+              <div>Ir</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Iridium
+              </div>
+            </button>
+            <button data-element="meitnerium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-gray-600">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>109</span><span class="hidden group-hover:inline">278</span>
+              </div>
+              <div>Mt</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Meitnerium
+              </div>
+            </button>
+          </div>
+          <div>
+            <button data-element="nickel" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>28</span><span class="hidden group-hover:inline">58.693</span>
+              </div>
+              <div>Ni</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Nickel
+              </div>
+            </button>
+            <button data-element="palladium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>46</span><span class="hidden group-hover:inline">106.42</span>
+              </div>
+              <div>Pd</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Palladium
+              </div>
+            </button>
+            <button data-element="platinum" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>78</span><span class="hidden group-hover:inline">195.08</span>
+              </div>
+              <div>Pt</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Platinum
+              </div>
+            </button>
+            <button data-element="darmstadtium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-gray-600">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>110</span><span class="hidden group-hover:inline">281</span>
+              </div>
+              <div>Ds</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Darmstadtium
+              </div>
+            </button>
+          </div>
+          <div>
+            <button data-element="copper" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>29</span><span class="hidden group-hover:inline">63.546</span>
+              </div>
+              <div>Cu</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Copper
+              </div>
+            </button>
+            <button data-element="silver" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>47</span><span class="hidden group-hover:inline">107.87</span>
+              </div>
+              <div>Ag</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Silver
+              </div>
+            </button>
+            <button data-element="gold" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>79</span><span class="hidden group-hover:inline">196.97</span>
+              </div>
+              <div>Au</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Gold
+              </div>
+            </button>
+            <button data-element="roentgenium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-gray-600">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>111</span><span class="hidden group-hover:inline">282</span>
+              </div>
+              <div>Rg</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Roentgenium
+              </div>
+            </button>
+          </div>
+          <div>
+            <button data-element="zinc" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>30</span><span class="hidden group-hover:inline">65.380</span>
+              </div>
+              <div>Zn</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Zinc
+              </div>
+            </button>
+            <button data-element="cadmium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>48</span><span class="hidden group-hover:inline">112.41</span>
+              </div>
+              <div>Cd</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Cadmium
+              </div>
+            </button>
+            <button data-element="mercury" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>80</span><span class="hidden group-hover:inline">200.59</span>
+              </div>
+              <div>Hg</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Mercury
+              </div>
+            </button>
+            <button data-element="copernicium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-gray-600">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>112</span><span class="hidden group-hover:inline">285</span>
+              </div>
+              <div>Cn</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Copernicium
+              </div>
+            </button>
+          </div>
+          <div>
+            <button data-element="boron" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-yellow-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>5</span><span class="hidden group-hover:inline">10.811</span>
+              </div>
+              <div>B</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Boron
+              </div>
+            </button>
+            <button data-element="aluminium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-emerald-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>13</span><span class="hidden group-hover:inline">26.982</span>
+              </div>
+              <div>Al</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Aluminium
+              </div>
+            </button>
+            <button data-element="gallium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-emerald-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>31</span><span class="hidden group-hover:inline">69.723</span>
+              </div>
+              <div>Ga</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Gallium
+              </div>
+            </button>
+            <button data-element="indium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-emerald-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>49</span><span class="hidden group-hover:inline">114.82</span>
+              </div>
+              <div>In</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Indium
+              </div>
+            </button>
+            <button data-element="thallium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-emerald-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>81</span><span class="hidden group-hover:inline">204.38</span>
+              </div>
+              <div>Tl</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Thallium
+              </div>
+            </button>
+            <button data-element="nihonium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-gray-600">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>113</span><span class="hidden group-hover:inline">286</span>
+              </div>
+              <div>Nh</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Nihonium
+              </div>
+            </button>
+          </div>
+          <div>
+            <button data-element="carbon" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-blue-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>6</span><span class="hidden group-hover:inline">12.011</span>
+              </div>
+              <div>C</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Carbon
+              </div>
+            </button>
+            <button data-element="silicon" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-yellow-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>16</span><span class="hidden group-hover:inline">28.086</span>
+              </div>
+              <div>Si</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Silicon
+              </div>
+            </button>
+            <button data-element="germanium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-yellow-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>32</span><span class="hidden group-hover:inline">72.640</span>
+              </div>
+              <div>Ge</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Germanium
+              </div>
+            </button>
+            <button data-element="tin" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-emerald-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>50</span><span class="hidden group-hover:inline">118.71</span>
+              </div>
+              <div>Sn</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Tin
+              </div>
+            </button>
+            <button data-element="lead" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-emerald-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>82</span><span class="hidden group-hover:inline">207.20</span>
+              </div>
+              <div>Pb</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Lead
+              </div>
+            </button>
+            <button data-element="flerovium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-gray-600">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>116</span><span class="hidden group-hover:inline">289</span>
+              </div>
+              <div>Fl</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Flerovium
+              </div>
+            </button>
+          </div>
+          <div>
+            <button data-element="nitrogen" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-blue-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>7</span><span class="hidden group-hover:inline">14.007</span>
+              </div>
+              <div>N</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Nitrogen
+              </div>
+            </button>
+            <button data-element="phosphorus" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-blue-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>15</span><span class="hidden group-hover:inline">30.974</span>
+              </div>
+              <div>P</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Phosphorus
+              </div>
+            </button>
+            <button data-element="arsenic" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-yellow-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>33</span><span class="hidden group-hover:inline">74.922</span>
+              </div>
+              <div>As</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Arsenic
+              </div>
+            </button>
+            <button data-element="antimony" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-yellow-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>51</span><span class="hidden group-hover:inline">121.76</span>
+              </div>
+              <div>Sb</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Antimony
+              </div>
+            </button>
+            <button data-element="bismuth" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-emerald-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>83</span><span class="hidden group-hover:inline">208.98</span>
+              </div>
+              <div>Bi</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Bismuth
+              </div>
+            </button>
+            <button data-element="moscovium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-gray-600">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>115</span><span class="hidden group-hover:inline">289</span>
+              </div>
+              <div>Mc</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Moscovium
+              </div>
+            </button>
+          </div>
+          <div>
+            <button data-element="oxygen" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-blue-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>8</span><span class="hidden group-hover:inline">15.999</span>
+              </div>
+              <div>O</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Oxygen
+              </div>
+            </button>
+            <button data-element="sulfur" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-blue-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>16</span><span class="hidden group-hover:inline">32.065</span>
+              </div>
+              <div>S</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Sulfur
+              </div>
+            </button>
+            <button data-element="selenium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-blue-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>34</span><span class="hidden group-hover:inline">78.960</span>
+              </div>
+              <div>Se</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Selenium
+              </div>
+            </button>
+            <button data-element="tellurium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-yellow-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>52</span><span class="hidden group-hover:inline">127.60</span>
+              </div>
+              <div>Te</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Tellurium
+              </div>
+            </button>
+            <button data-element="polonium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-emerald-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>84</span><span class="hidden group-hover:inline">209</span>
+              </div>
+              <div>Po</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Polonium
+              </div>
+            </button>
+            <button data-element="livermorium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-gray-600">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>116</span><span class="hidden group-hover:inline">293</span>
+              </div>
+              <div>Lv</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Livermorium
+              </div>
+            </button>
+          </div>
+          <div>
+            <button data-element="fluorine" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-blue-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>9</span><span class="hidden group-hover:inline">18.998</span>
+              </div>
+              <div>F</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Fluorine
+              </div>
+            </button>
+            <button data-element="chlorine" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-blue-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>17</span><span class="hidden group-hover:inline">35.453</span>
+              </div>
+              <div>Cl</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Chlorine
+              </div>
+            </button>
+            <button data-element="bromine" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-blue-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>35</span><span class="hidden group-hover:inline">79.904</span>
+              </div>
+              <div>Br</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Bromine
+              </div>
+            </button>
+            <button data-element="iodine" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-blue-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>53</span><span class="hidden group-hover:inline">126.90</span>
+              </div>
+              <div>I</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Iodine
+              </div>
+            </button>
+            <button data-element="astatine" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-emerald-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>85</span><span class="hidden group-hover:inline">210</span>
+              </div>
+              <div>At</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Astatine
+              </div>
+            </button>
+            <button data-element="tennessine" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-gray-600">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>117</span><span class="hidden group-hover:inline">294</span>
+              </div>
+              <div>Ts</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Tennessine
+              </div>
+            </button>
+          </div>
+          <div>
+            <button data-element="helium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-red-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>2</span><span class="hidden group-hover:inline">4.0026</span>
+              </div>
+              <div>He</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Helium
+              </div>
+            </button>
+            <button data-element="neon" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-red-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>10</span><span class="hidden group-hover:inline">20.180</span>
+              </div>
+              <div>Ne</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Neon
+              </div>
+            </button>
+            <button data-element="argon" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-red-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>18</span><span class="hidden group-hover:inline">39.948</span>
+              </div>
+              <div>Ar</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Argon
+              </div>
+            </button>
+            <button data-element="krypton" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-red-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>36</span><span class="hidden group-hover:inline">83.798</span>
+              </div>
+              <div>Kr</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Krypton
+              </div>
+            </button>
+            <button data-element="xenon" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-red-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>54</span><span class="hidden group-hover:inline">131.29</span>
+              </div>
+              <div>Xe</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Xenon
+              </div>
+            </button>
+            <button data-element="radon" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-red-900">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>86</span><span class="hidden group-hover:inline">222</span>
+              </div>
+              <div>Rn</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Radon
+              </div>
+            </button>
+            <button data-element="oganesson" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-gray-600 group hover:scale-[200%]">
+              <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+                <span>118</span><span class="hidden group-hover:inline">294</span>
+              </div>
+              <div class="group-hover:scale-75">Og</div>
+              <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+                Oganesson
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="ml-[10.375rem] flex gap-0.5 mt-4">
+          <button data-element="cerium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>58</span><span class="hidden group-hover:inline">140.12</span>
+            </div>
+            <div class="group-hover:scale-75">Ce</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Cerium
+            </div>
+          </button>
+          <button data-element="praseodymium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>59</span><span class="hidden group-hover:inline">140.91</span>
+            </div>
+            <div class="group-hover:scale-75">Pr</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Praseodymium
+            </div>
+          </button>
+          <button data-element="neodymium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>60</span><span class="hidden group-hover:inline">144.24</span>
+            </div>
+            <div class="group-hover:scale-75">Nd</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Neodymium
+            </div>
+          </button>
+          <button data-element="promethium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>61</span><span class="hidden group-hover:inline">145</span>
+            </div>
+            <div class="group-hover:scale-75">Pm</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Promethium
+            </div>
+          </button>
+          <button data-element="samarium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>62</span><span class="hidden group-hover:inline">150.36</span>
+            </div>
+            <div class="group-hover:scale-75">Sm</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Samarium
+            </div>
+          </button>
+          <button data-element="europium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>63</span><span class="hidden group-hover:inline">151.96</span>
+            </div>
+            <div class="group-hover:scale-75">Eu</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Europium
+            </div>
+          </button>
+          <button data-element="gadolinium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>64</span><span class="hidden group-hover:inline">157.25</span>
+            </div>
+            <div class="group-hover:scale-75">Gd</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Gadolinium
+            </div>
+          </button>
+          <button data-element="terbium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>65</span><span class="hidden group-hover:inline">158.93</span>
+            </div>
+            <div class="group-hover:scale-75">Tb</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Terbium
+            </div>
+          </button>
+          <button data-element="dysprosium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>66</span><span class="hidden group-hover:inline">162.5</span>
+            </div>
+            <div class="group-hover:scale-75">Dy</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Dysprosium
+            </div>
+          </button>
+          <button data-element="holmium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>67</span><span class="hidden group-hover:inline">164.93</span>
+            </div>
+            <div class="group-hover:scale-75">Ho</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Holmium
+            </div>
+          </button>
+          <button data-element="erbium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>68</span><span class="hidden group-hover:inline">167.26</span>
+            </div>
+            <div class="group-hover:scale-75">Er</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Erbium
+            </div>
+          </button>
+          <button data-element="thulium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>69</span><span class="hidden group-hover:inline">168.93</span>
+            </div>
+            <div class="group-hover:scale-75">Tm</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Thulium
+            </div>
+          </button>
+          <button data-element="ytterbium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>70</span><span class="hidden group-hover:inline">173.04</span>
+            </div>
+            <div class="group-hover:scale-75">Yb</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Ytterbium
+            </div>
+          </button>
+          <button data-element="lutetium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>71</span><span class="hidden group-hover:inline">174.97</span>
+            </div>
+            <div class="group-hover:scale-75">Lu</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Lutetium
+            </div>
+          </button>
+        </div>
+        <div class="ml-[10.375rem] flex gap-0.5">
+          <button data-element="thorium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>90</span><span class="hidden group-hover:inline">232.04</span>
+            </div>
+            <div class="group-hover:scale-75">Th</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Thorium
+            </div>
+          </button>
+          <button data-element="protactinium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>91</span><span class="hidden group-hover:inline">231.04</span>
+            </div>
+            <div class="group-hover:scale-75">Pa</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Protactinium
+            </div>
+          </button>
+          <button data-element="uranium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>92</span><span class="hidden group-hover:inline">238.03</span>
+            </div>
+            <div class="group-hover:scale-75">U</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Uranium
+            </div>
+          </button>
+          <button data-element="neptunium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>93</span><span class="hidden group-hover:inline">237.05</span>
+            </div>
+            <div class="group-hover:scale-75">Np</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Neptunium
+            </div>
+          </button>
+          <button data-element="plutonium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>94</span><span class="hidden group-hover:inline">244</span>
+            </div>
+            <div class="group-hover:scale-75">Pu</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Plutonium
+            </div>
+          </button>
+          <button data-element="americium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>95</span><span class="hidden group-hover:inline">243</span>
+            </div>
+            <div class="group-hover:scale-75">Am</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Americium
+            </div>
+          </button>
+          <button data-element="curium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>96</span><span class="hidden group-hover:inline">247</span>
+            </div>
+            <div class="group-hover:scale-75">Cm</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Curium
+            </div>
+          </button>
+          <button data-element="berkelium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>97</span><span class="hidden group-hover:inline">247</span>
+            </div>
+            <div class="group-hover:scale-75">Bk</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Berkelium
+            </div>
+          </button>
+          <button data-element="californium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>98</span><span class="hidden group-hover:inline">251</span>
+            </div>
+            <div class="group-hover:scale-75">Cf</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Californium
+            </div>
+          </button>
+          <button data-element="einsteinium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>99</span><span class="hidden group-hover:inline">252</span>
+            </div>
+            <div class="group-hover:scale-75">Es</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Einsteinium
+            </div>
+          </button>
+          <button data-element="fermium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>100</span><span class="hidden group-hover:inline">257</span>
+            </div>
+            <div class="group-hover:scale-75">Fm</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Fermium
+            </div>
+          </button>
+          <button data-element="mendelevium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>101</span><span class="hidden group-hover:inline">258</span>
+            </div>
+            <div class="group-hover:scale-75">Md</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Mendelevium
+            </div>
+          </button>
+          <button data-element="nobelium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>102</span><span class="hidden group-hover:inline">259</span>
+            </div>
+            <div class="group-hover:scale-75">No</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Nobelium
+            </div>
+          </button>
+          <button data-element="lawrencium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+            <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
+              <span>103</span><span class="hidden group-hover:inline">262</span>
+            </div>
+            <div class="group-hover:scale-75">Lr</div>
+            <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
+              Lawrencium
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>

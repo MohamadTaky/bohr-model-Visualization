@@ -26,10 +26,10 @@ const particles = {
   },
 };
 
-export default function generateParticle<
-  T extends keyof typeof particles,
-  R = T extends "electron" ? Electron : Particle<T>,
->(type: T, position = new THREE.Vector3()) {
+export default function generateParticle<T extends keyof typeof particles, R = T extends "electron" ? Electron : Particle<T>>(
+  type: T,
+  position = new THREE.Vector3(),
+) {
   const geomentry = new THREE.SphereGeometry(particles[type].radius);
   const material = new THREE.MeshStandardMaterial({ color: particles[type].color });
   const mesh = new THREE.Mesh(geomentry, material);
@@ -39,5 +39,6 @@ export default function generateParticle<
   }
 
   mesh.position.copy(position);
+  mesh.userData.type = type;
   return mesh as R;
 }
