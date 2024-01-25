@@ -8,12 +8,16 @@
   </head>
   <body>
     <canvas id="canvas"></canvas>
-    <div class="mx-8 mt-4">
-      <button id="tableToggle">toggle periodic table</button>
-      <div data-visible="true" id="table" class="mt-8 mx-auto text-center hidden data-[visible='true']:block w-fit">
-        <div class="flex items-end gap-0.5">
+    <main class="w-4/5 mx-auto p-2">
+      <button id="tableToggle" class="mb-4">toggle periodic table</button>
+      <div
+        data-visible="true"
+        id="table"
+        class="text-center hidden data-[visible='true']:block w-fit max-w-[80vw] scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-900 overflow-x-auto p-4 pr-6 overflow-y-clip"
+      >
+        <div class="flex items-end gap-0.5 mb-4">
           <div>
-            <button data-element="hydrogen" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+            <button data-element="hydrogen" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[170%]">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>1</span><span class="hidden group-hover:inline">1.0078</span>
               </div>
@@ -22,7 +26,7 @@
                 Hydrogen
               </div>
             </button>
-            <button data-element="lithium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-cyan-900">
+            <button data-element="lithium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-cyan-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>3</span><span class="hidden group-hover:inline">6.9410</span>
               </div>
@@ -31,7 +35,7 @@
                 Lithium
               </div>
             </button>
-            <button data-element="sodium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-cyan-900">
+            <button data-element="sodium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-cyan-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>11</span><span class="hidden group-hover:inline">22.990</span>
               </div>
@@ -40,7 +44,7 @@
                 Sodium
               </div>
             </button>
-            <button data-element="potassium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-cyan-900">
+            <button data-element="potassium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-cyan-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>19</span><span class="hidden group-hover:inline">39.098</span>
               </div>
@@ -49,7 +53,7 @@
                 Potassium
               </div>
             </button>
-            <button data-element="rubidium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-cyan-900">
+            <button data-element="rubidium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-cyan-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>37</span><span class="hidden group-hover:inline">85.468</span>
               </div>
@@ -58,7 +62,7 @@
                 Rubidium
               </div>
             </button>
-            <button data-element="cesium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-cyan-900">
+            <button data-element="cesium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-cyan-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>55</span><span class="hidden group-hover:inline">132.91</span>
               </div>
@@ -67,7 +71,7 @@
                 Caesium
               </div>
             </button>
-            <button data-element="francium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-cyan-900">
+            <button data-element="francium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-cyan-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>87</span><span class="hidden group-hover:inline">223</span>
               </div>
@@ -78,7 +82,7 @@
             </button>
           </div>
           <div>
-            <button data-element="beryllium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-red-900">
+            <button data-element="beryllium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-red-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>4</span><span class="hidden group-hover:inline">9.0122</span>
               </div>
@@ -87,7 +91,7 @@
                 Beryllium
               </div>
             </button>
-            <button data-element="magnesium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-red-900">
+            <button data-element="magnesium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-red-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>12</span><span class="hidden group-hover:inline">24.305</span>
               </div>
@@ -96,7 +100,7 @@
                 Magnesium
               </div>
             </button>
-            <button data-element="calcium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-red-900">
+            <button data-element="calcium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-red-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>20</span><span class="hidden group-hover:inline">40.078</span>
               </div>
@@ -105,7 +109,7 @@
                 Calcium
               </div>
             </button>
-            <button data-element="strontium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-red-900">
+            <button data-element="strontium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-red-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>38</span><span class="hidden group-hover:inline">87.620</span>
               </div>
@@ -114,7 +118,7 @@
                 Strontium
               </div>
             </button>
-            <button data-element="barium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-red-900">
+            <button data-element="barium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-red-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>56</span><span class="hidden group-hover:inline">137.33</span>
               </div>
@@ -123,7 +127,7 @@
                 Barium
               </div>
             </button>
-            <button data-element="radium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-red-900">
+            <button data-element="radium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-red-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>88</span><span class="hidden group-hover:inline">226</span>
               </div>
@@ -134,7 +138,7 @@
             </button>
           </div>
           <div class="mr-4">
-            <button data-element="scandium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="scandium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>21</span><span class="hidden group-hover:inline">44.956</span>
               </div>
@@ -143,7 +147,7 @@
                 Scandium
               </div>
             </button>
-            <button data-element="yttrium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="yttrium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>39</span><span class="hidden group-hover:inline">88.906</span>
               </div>
@@ -152,7 +156,7 @@
                 Yttrium
               </div>
             </button>
-            <button data-element="lanthanum" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-blue-900">
+            <button data-element="lanthanum" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-blue-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>57</span><span class="hidden group-hover:inline">88.906</span>
               </div>
@@ -161,7 +165,7 @@
                 Lanthanum
               </div>
             </button>
-            <button data-element="actinium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-orange-900">
+            <button data-element="actinium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-orange-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>89</span><span class="hidden group-hover:inline">227</span>
               </div>
@@ -172,7 +176,7 @@
             </button>
           </div>
           <div>
-            <button data-element="titanium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="titanium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>22</span><span class="hidden group-hover:inline">47.867</span>
               </div>
@@ -181,7 +185,7 @@
                 Titanium
               </div>
             </button>
-            <button data-element="zirconium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="zirconium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>40</span><span class="hidden group-hover:inline">91.224</span>
               </div>
@@ -190,7 +194,7 @@
                 Zirconium
               </div>
             </button>
-            <button data-element="hafnium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="hafnium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>72</span><span class="hidden group-hover:inline">178.49</span>
               </div>
@@ -199,7 +203,7 @@
                 Hafnium
               </div>
             </button>
-            <button data-element="rutherfordium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="rutherfordium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>104</span><span class="hidden group-hover:inline">267</span>
               </div>
@@ -210,7 +214,7 @@
             </button>
           </div>
           <div>
-            <button data-element="vanadium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="vanadium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>23</span><span class="hidden group-hover:inline">50.942</span>
               </div>
@@ -219,7 +223,7 @@
                 Vanadium
               </div>
             </button>
-            <button data-element="niobium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="niobium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>41</span><span class="hidden group-hover:inline">92.906</span>
               </div>
@@ -228,16 +232,16 @@
                 Niobium
               </div>
             </button>
-            <button data-element="tantalum" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="tantalum" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
-                <span>73</span><span class="hidden group-hover:inline">180.95</span>
+                <span>73</span><span class="hidden group-hover:inline">170.95</span>
               </div>
               <div>Ta</div>
               <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
                 Tantalum
               </div>
             </button>
-            <button data-element="dubnium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="dubnium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>105</span><span class="hidden group-hover:inline">262</span>
               </div>
@@ -248,7 +252,7 @@
             </button>
           </div>
           <div>
-            <button data-element="chromium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="chromium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>24</span><span class="hidden group-hover:inline">51.996</span>
               </div>
@@ -257,7 +261,7 @@
                 Chromium
               </div>
             </button>
-            <button data-element="molybdenum" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="molybdenum" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>42</span><span class="hidden group-hover:inline">95.950</span>
               </div>
@@ -266,7 +270,7 @@
                 Molybdenum
               </div>
             </button>
-            <button data-element="tungsten" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="tungsten" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>74</span><span class="hidden group-hover:inline">183.84</span>
               </div>
@@ -275,7 +279,7 @@
                 Tungsten
               </div>
             </button>
-            <button data-element="seaborgium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="seaborgium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>106</span><span class="hidden group-hover:inline">269</span>
               </div>
@@ -286,7 +290,7 @@
             </button>
           </div>
           <div>
-            <button data-element="manganese" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="manganese" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>25</span><span class="hidden group-hover:inline">54.938</span>
               </div>
@@ -295,7 +299,7 @@
                 Manganese
               </div>
             </button>
-            <button data-element="technetium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="technetium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>43</span><span class="hidden group-hover:inline">98</span>
               </div>
@@ -304,7 +308,7 @@
                 Technetium
               </div>
             </button>
-            <button data-element="rhenium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="rhenium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>75</span><span class="hidden group-hover:inline">186.21</span>
               </div>
@@ -313,7 +317,7 @@
                 Rhenium
               </div>
             </button>
-            <button data-element="bohrium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="bohrium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>107</span><span class="hidden group-hover:inline">264</span>
               </div>
@@ -324,7 +328,7 @@
             </button>
           </div>
           <div>
-            <button data-element="iron" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="iron" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>26</span><span class="hidden group-hover:inline">55.845</span>
               </div>
@@ -333,7 +337,7 @@
                 Iron
               </div>
             </button>
-            <button data-element="ruthenium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="ruthenium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>44</span><span class="hidden group-hover:inline">101.07</span>
               </div>
@@ -342,7 +346,7 @@
                 Ruthenium
               </div>
             </button>
-            <button data-element="osmium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="osmium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>76</span><span class="hidden group-hover:inline">190.23</span>
               </div>
@@ -351,7 +355,7 @@
                 Osmium
               </div>
             </button>
-            <button data-element="hassium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="hassium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>108</span><span class="hidden group-hover:inline">269</span>
               </div>
@@ -362,7 +366,7 @@
             </button>
           </div>
           <div>
-            <button data-element="cobalt" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="cobalt" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>27</span><span class="hidden group-hover:inline">58.933</span>
               </div>
@@ -371,7 +375,7 @@
                 Cobalt
               </div>
             </button>
-            <button data-element="rhodium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="rhodium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>45</span><span class="hidden group-hover:inline">102.91</span>
               </div>
@@ -380,7 +384,7 @@
                 Rhodium
               </div>
             </button>
-            <button data-element="iridium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="iridium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>77</span><span class="hidden group-hover:inline">192.22</span>
               </div>
@@ -389,7 +393,7 @@
                 Iridium
               </div>
             </button>
-            <button data-element="meitnerium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-gray-600">
+            <button data-element="meitnerium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-gray-600">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>109</span><span class="hidden group-hover:inline">278</span>
               </div>
@@ -400,7 +404,7 @@
             </button>
           </div>
           <div>
-            <button data-element="nickel" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="nickel" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>28</span><span class="hidden group-hover:inline">58.693</span>
               </div>
@@ -409,7 +413,7 @@
                 Nickel
               </div>
             </button>
-            <button data-element="palladium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="palladium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>46</span><span class="hidden group-hover:inline">106.42</span>
               </div>
@@ -418,7 +422,7 @@
                 Palladium
               </div>
             </button>
-            <button data-element="platinum" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="platinum" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>78</span><span class="hidden group-hover:inline">195.08</span>
               </div>
@@ -427,7 +431,7 @@
                 Platinum
               </div>
             </button>
-            <button data-element="darmstadtium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-gray-600">
+            <button data-element="darmstadtium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-gray-600">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>110</span><span class="hidden group-hover:inline">281</span>
               </div>
@@ -438,7 +442,7 @@
             </button>
           </div>
           <div>
-            <button data-element="copper" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="copper" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>29</span><span class="hidden group-hover:inline">63.546</span>
               </div>
@@ -447,7 +451,7 @@
                 Copper
               </div>
             </button>
-            <button data-element="silver" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="silver" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>47</span><span class="hidden group-hover:inline">107.87</span>
               </div>
@@ -456,7 +460,7 @@
                 Silver
               </div>
             </button>
-            <button data-element="gold" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="gold" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>79</span><span class="hidden group-hover:inline">196.97</span>
               </div>
@@ -465,7 +469,7 @@
                 Gold
               </div>
             </button>
-            <button data-element="roentgenium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-gray-600">
+            <button data-element="roentgenium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-gray-600">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>111</span><span class="hidden group-hover:inline">282</span>
               </div>
@@ -476,7 +480,7 @@
             </button>
           </div>
           <div>
-            <button data-element="zinc" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="zinc" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>30</span><span class="hidden group-hover:inline">65.380</span>
               </div>
@@ -485,7 +489,7 @@
                 Zinc
               </div>
             </button>
-            <button data-element="cadmium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="cadmium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>48</span><span class="hidden group-hover:inline">112.41</span>
               </div>
@@ -494,16 +498,16 @@
                 Cadmium
               </div>
             </button>
-            <button data-element="mercury" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-indigo-900">
+            <button data-element="mercury" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-indigo-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
-                <span>80</span><span class="hidden group-hover:inline">200.59</span>
+                <span>80</span><span class="hidden group-hover:inline">170.59</span>
               </div>
               <div>Hg</div>
               <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
                 Mercury
               </div>
             </button>
-            <button data-element="copernicium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-gray-600">
+            <button data-element="copernicium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-gray-600">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>112</span><span class="hidden group-hover:inline">285</span>
               </div>
@@ -514,7 +518,7 @@
             </button>
           </div>
           <div>
-            <button data-element="boron" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-yellow-900">
+            <button data-element="boron" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-yellow-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>5</span><span class="hidden group-hover:inline">10.811</span>
               </div>
@@ -523,7 +527,7 @@
                 Boron
               </div>
             </button>
-            <button data-element="aluminium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-emerald-900">
+            <button data-element="aluminium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-emerald-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>13</span><span class="hidden group-hover:inline">26.982</span>
               </div>
@@ -532,7 +536,7 @@
                 Aluminium
               </div>
             </button>
-            <button data-element="gallium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-emerald-900">
+            <button data-element="gallium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-emerald-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>31</span><span class="hidden group-hover:inline">69.723</span>
               </div>
@@ -541,7 +545,7 @@
                 Gallium
               </div>
             </button>
-            <button data-element="indium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-emerald-900">
+            <button data-element="indium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-emerald-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>49</span><span class="hidden group-hover:inline">114.82</span>
               </div>
@@ -550,7 +554,7 @@
                 Indium
               </div>
             </button>
-            <button data-element="thallium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-emerald-900">
+            <button data-element="thallium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-emerald-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>81</span><span class="hidden group-hover:inline">204.38</span>
               </div>
@@ -559,7 +563,7 @@
                 Thallium
               </div>
             </button>
-            <button data-element="nihonium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-gray-600">
+            <button data-element="nihonium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-gray-600">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>113</span><span class="hidden group-hover:inline">286</span>
               </div>
@@ -570,7 +574,7 @@
             </button>
           </div>
           <div>
-            <button data-element="carbon" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-blue-900">
+            <button data-element="carbon" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-blue-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>6</span><span class="hidden group-hover:inline">12.011</span>
               </div>
@@ -579,7 +583,7 @@
                 Carbon
               </div>
             </button>
-            <button data-element="silicon" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-yellow-900">
+            <button data-element="silicon" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-yellow-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>16</span><span class="hidden group-hover:inline">28.086</span>
               </div>
@@ -588,7 +592,7 @@
                 Silicon
               </div>
             </button>
-            <button data-element="germanium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-yellow-900">
+            <button data-element="germanium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-yellow-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>32</span><span class="hidden group-hover:inline">72.640</span>
               </div>
@@ -597,7 +601,7 @@
                 Germanium
               </div>
             </button>
-            <button data-element="tin" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-emerald-900">
+            <button data-element="tin" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-emerald-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>50</span><span class="hidden group-hover:inline">118.71</span>
               </div>
@@ -606,7 +610,7 @@
                 Tin
               </div>
             </button>
-            <button data-element="lead" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-emerald-900">
+            <button data-element="lead" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-emerald-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>82</span><span class="hidden group-hover:inline">207.20</span>
               </div>
@@ -615,7 +619,7 @@
                 Lead
               </div>
             </button>
-            <button data-element="flerovium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-gray-600">
+            <button data-element="flerovium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-gray-600">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>116</span><span class="hidden group-hover:inline">289</span>
               </div>
@@ -626,7 +630,7 @@
             </button>
           </div>
           <div>
-            <button data-element="nitrogen" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-blue-900">
+            <button data-element="nitrogen" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-blue-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>7</span><span class="hidden group-hover:inline">14.007</span>
               </div>
@@ -635,7 +639,7 @@
                 Nitrogen
               </div>
             </button>
-            <button data-element="phosphorus" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-blue-900">
+            <button data-element="phosphorus" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-blue-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>15</span><span class="hidden group-hover:inline">30.974</span>
               </div>
@@ -644,7 +648,7 @@
                 Phosphorus
               </div>
             </button>
-            <button data-element="arsenic" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-yellow-900">
+            <button data-element="arsenic" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-yellow-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>33</span><span class="hidden group-hover:inline">74.922</span>
               </div>
@@ -653,7 +657,7 @@
                 Arsenic
               </div>
             </button>
-            <button data-element="antimony" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-yellow-900">
+            <button data-element="antimony" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-yellow-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>51</span><span class="hidden group-hover:inline">121.76</span>
               </div>
@@ -662,7 +666,7 @@
                 Antimony
               </div>
             </button>
-            <button data-element="bismuth" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-emerald-900">
+            <button data-element="bismuth" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-emerald-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>83</span><span class="hidden group-hover:inline">208.98</span>
               </div>
@@ -671,7 +675,7 @@
                 Bismuth
               </div>
             </button>
-            <button data-element="moscovium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-gray-600">
+            <button data-element="moscovium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-gray-600">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>115</span><span class="hidden group-hover:inline">289</span>
               </div>
@@ -682,7 +686,7 @@
             </button>
           </div>
           <div>
-            <button data-element="oxygen" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-blue-900">
+            <button data-element="oxygen" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-blue-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>8</span><span class="hidden group-hover:inline">15.999</span>
               </div>
@@ -691,7 +695,7 @@
                 Oxygen
               </div>
             </button>
-            <button data-element="sulfur" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-blue-900">
+            <button data-element="sulfur" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-blue-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>16</span><span class="hidden group-hover:inline">32.065</span>
               </div>
@@ -700,7 +704,7 @@
                 Sulfur
               </div>
             </button>
-            <button data-element="selenium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-blue-900">
+            <button data-element="selenium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-blue-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>34</span><span class="hidden group-hover:inline">78.960</span>
               </div>
@@ -709,7 +713,7 @@
                 Selenium
               </div>
             </button>
-            <button data-element="tellurium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-yellow-900">
+            <button data-element="tellurium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-yellow-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>52</span><span class="hidden group-hover:inline">127.60</span>
               </div>
@@ -718,7 +722,7 @@
                 Tellurium
               </div>
             </button>
-            <button data-element="polonium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-emerald-900">
+            <button data-element="polonium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-emerald-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>84</span><span class="hidden group-hover:inline">209</span>
               </div>
@@ -727,7 +731,7 @@
                 Polonium
               </div>
             </button>
-            <button data-element="livermorium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-gray-600">
+            <button data-element="livermorium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-gray-600">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>116</span><span class="hidden group-hover:inline">293</span>
               </div>
@@ -738,7 +742,7 @@
             </button>
           </div>
           <div>
-            <button data-element="fluorine" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-blue-900">
+            <button data-element="fluorine" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-blue-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>9</span><span class="hidden group-hover:inline">18.998</span>
               </div>
@@ -747,7 +751,7 @@
                 Fluorine
               </div>
             </button>
-            <button data-element="chlorine" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-blue-900">
+            <button data-element="chlorine" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-blue-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>17</span><span class="hidden group-hover:inline">35.453</span>
               </div>
@@ -756,7 +760,7 @@
                 Chlorine
               </div>
             </button>
-            <button data-element="bromine" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-blue-900">
+            <button data-element="bromine" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-blue-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>35</span><span class="hidden group-hover:inline">79.904</span>
               </div>
@@ -765,7 +769,7 @@
                 Bromine
               </div>
             </button>
-            <button data-element="iodine" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-blue-900">
+            <button data-element="iodine" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-blue-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>53</span><span class="hidden group-hover:inline">126.90</span>
               </div>
@@ -774,7 +778,7 @@
                 Iodine
               </div>
             </button>
-            <button data-element="astatine" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-emerald-900">
+            <button data-element="astatine" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-emerald-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>85</span><span class="hidden group-hover:inline">210</span>
               </div>
@@ -783,7 +787,7 @@
                 Astatine
               </div>
             </button>
-            <button data-element="tennessine" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-gray-600">
+            <button data-element="tennessine" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-gray-600">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>117</span><span class="hidden group-hover:inline">294</span>
               </div>
@@ -794,7 +798,7 @@
             </button>
           </div>
           <div>
-            <button data-element="helium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-red-900">
+            <button data-element="helium" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-red-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>2</span><span class="hidden group-hover:inline">4.0026</span>
               </div>
@@ -803,16 +807,16 @@
                 Helium
               </div>
             </button>
-            <button data-element="neon" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-red-900">
+            <button data-element="neon" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-red-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
-                <span>10</span><span class="hidden group-hover:inline">20.180</span>
+                <span>10</span><span class="hidden group-hover:inline">20.170</span>
               </div>
               <div>Ne</div>
               <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
                 Neon
               </div>
             </button>
-            <button data-element="argon" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-red-900">
+            <button data-element="argon" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-red-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>18</span><span class="hidden group-hover:inline">39.948</span>
               </div>
@@ -821,7 +825,7 @@
                 Argon
               </div>
             </button>
-            <button data-element="krypton" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-red-900">
+            <button data-element="krypton" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-red-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>36</span><span class="hidden group-hover:inline">83.798</span>
               </div>
@@ -830,7 +834,7 @@
                 Krypton
               </div>
             </button>
-            <button data-element="xenon" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-red-900">
+            <button data-element="xenon" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-red-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>54</span><span class="hidden group-hover:inline">131.29</span>
               </div>
@@ -839,7 +843,7 @@
                 Xenon
               </div>
             </button>
-            <button data-element="radon" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[200%] bg-red-900">
+            <button data-element="radon" class="block w-12 leading-tight p-0.5 mb-0.5 group hover:scale-[170%] bg-red-900">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>86</span><span class="hidden group-hover:inline">222</span>
               </div>
@@ -848,7 +852,7 @@
                 Radon
               </div>
             </button>
-            <button data-element="oganesson" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-gray-600 group hover:scale-[200%]">
+            <button data-element="oganesson" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-gray-600 group hover:scale-[170%]">
               <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
                 <span>118</span><span class="hidden group-hover:inline">294</span>
               </div>
@@ -859,8 +863,8 @@
             </button>
           </div>
         </div>
-        <div class="ml-[10.375rem] flex gap-0.5 mt-4">
-          <button data-element="cerium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+        <div class="ml-[10.375rem] flex gap-0.5 w-fit">
+          <button data-element="cerium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>58</span><span class="hidden group-hover:inline">140.12</span>
             </div>
@@ -869,7 +873,7 @@
               Cerium
             </div>
           </button>
-          <button data-element="praseodymium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+          <button data-element="praseodymium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>59</span><span class="hidden group-hover:inline">140.91</span>
             </div>
@@ -878,7 +882,7 @@
               Praseodymium
             </div>
           </button>
-          <button data-element="neodymium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+          <button data-element="neodymium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>60</span><span class="hidden group-hover:inline">144.24</span>
             </div>
@@ -887,7 +891,7 @@
               Neodymium
             </div>
           </button>
-          <button data-element="promethium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+          <button data-element="promethium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>61</span><span class="hidden group-hover:inline">145</span>
             </div>
@@ -896,16 +900,16 @@
               Promethium
             </div>
           </button>
-          <button data-element="samarium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+          <button data-element="samarium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
-              <span>62</span><span class="hidden group-hover:inline">150.36</span>
+              <span>62</span><span class="hidden group-hover:inline">170.36</span>
             </div>
             <div class="group-hover:scale-75">Sm</div>
             <div class="text-[10px] overflow-hidden overflow-ellipsis group-hover:scale-[60%] group-hover:overflow-visible group-hover:-ml-0.5">
               Samarium
             </div>
           </button>
-          <button data-element="europium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+          <button data-element="europium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>63</span><span class="hidden group-hover:inline">151.96</span>
             </div>
@@ -914,7 +918,7 @@
               Europium
             </div>
           </button>
-          <button data-element="gadolinium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+          <button data-element="gadolinium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>64</span><span class="hidden group-hover:inline">157.25</span>
             </div>
@@ -923,7 +927,7 @@
               Gadolinium
             </div>
           </button>
-          <button data-element="terbium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+          <button data-element="terbium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>65</span><span class="hidden group-hover:inline">158.93</span>
             </div>
@@ -932,7 +936,7 @@
               Terbium
             </div>
           </button>
-          <button data-element="dysprosium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+          <button data-element="dysprosium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>66</span><span class="hidden group-hover:inline">162.5</span>
             </div>
@@ -941,7 +945,7 @@
               Dysprosium
             </div>
           </button>
-          <button data-element="holmium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+          <button data-element="holmium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>67</span><span class="hidden group-hover:inline">164.93</span>
             </div>
@@ -950,7 +954,7 @@
               Holmium
             </div>
           </button>
-          <button data-element="erbium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+          <button data-element="erbium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>68</span><span class="hidden group-hover:inline">167.26</span>
             </div>
@@ -959,7 +963,7 @@
               Erbium
             </div>
           </button>
-          <button data-element="thulium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+          <button data-element="thulium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>69</span><span class="hidden group-hover:inline">168.93</span>
             </div>
@@ -968,7 +972,7 @@
               Thulium
             </div>
           </button>
-          <button data-element="ytterbium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+          <button data-element="ytterbium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>70</span><span class="hidden group-hover:inline">173.04</span>
             </div>
@@ -977,7 +981,7 @@
               Ytterbium
             </div>
           </button>
-          <button data-element="lutetium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[200%]">
+          <button data-element="lutetium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-blue-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>71</span><span class="hidden group-hover:inline">174.97</span>
             </div>
@@ -987,8 +991,8 @@
             </div>
           </button>
         </div>
-        <div class="ml-[10.375rem] flex gap-0.5">
-          <button data-element="thorium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+        <div class="ml-[10.375rem] flex gap-0.5 w-fit">
+          <button data-element="thorium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>90</span><span class="hidden group-hover:inline">232.04</span>
             </div>
@@ -997,7 +1001,7 @@
               Thorium
             </div>
           </button>
-          <button data-element="protactinium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+          <button data-element="protactinium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>91</span><span class="hidden group-hover:inline">231.04</span>
             </div>
@@ -1006,7 +1010,7 @@
               Protactinium
             </div>
           </button>
-          <button data-element="uranium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+          <button data-element="uranium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>92</span><span class="hidden group-hover:inline">238.03</span>
             </div>
@@ -1015,7 +1019,7 @@
               Uranium
             </div>
           </button>
-          <button data-element="neptunium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+          <button data-element="neptunium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>93</span><span class="hidden group-hover:inline">237.05</span>
             </div>
@@ -1024,7 +1028,7 @@
               Neptunium
             </div>
           </button>
-          <button data-element="plutonium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+          <button data-element="plutonium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>94</span><span class="hidden group-hover:inline">244</span>
             </div>
@@ -1033,7 +1037,7 @@
               Plutonium
             </div>
           </button>
-          <button data-element="americium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+          <button data-element="americium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>95</span><span class="hidden group-hover:inline">243</span>
             </div>
@@ -1042,7 +1046,7 @@
               Americium
             </div>
           </button>
-          <button data-element="curium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+          <button data-element="curium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>96</span><span class="hidden group-hover:inline">247</span>
             </div>
@@ -1051,7 +1055,7 @@
               Curium
             </div>
           </button>
-          <button data-element="berkelium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+          <button data-element="berkelium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>97</span><span class="hidden group-hover:inline">247</span>
             </div>
@@ -1060,7 +1064,7 @@
               Berkelium
             </div>
           </button>
-          <button data-element="californium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+          <button data-element="californium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>98</span><span class="hidden group-hover:inline">251</span>
             </div>
@@ -1069,7 +1073,7 @@
               Californium
             </div>
           </button>
-          <button data-element="einsteinium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+          <button data-element="einsteinium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>99</span><span class="hidden group-hover:inline">252</span>
             </div>
@@ -1078,7 +1082,7 @@
               Einsteinium
             </div>
           </button>
-          <button data-element="fermium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+          <button data-element="fermium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>100</span><span class="hidden group-hover:inline">257</span>
             </div>
@@ -1087,7 +1091,7 @@
               Fermium
             </div>
           </button>
-          <button data-element="mendelevium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+          <button data-element="mendelevium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>101</span><span class="hidden group-hover:inline">258</span>
             </div>
@@ -1096,7 +1100,7 @@
               Mendelevium
             </div>
           </button>
-          <button data-element="nobelium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+          <button data-element="nobelium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>102</span><span class="hidden group-hover:inline">259</span>
             </div>
@@ -1105,7 +1109,7 @@
               Nobelium
             </div>
           </button>
-          <button data-element="lawrencium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[200%]">
+          <button data-element="lawrencium" class="block w-12 leading-tight p-0.5 mb-0.5 group bg-orange-900 group hover:scale-[170%]">
             <div class="text-[10px] text-start group-hover:scale-75 flex justify-between">
               <span>103</span><span class="hidden group-hover:inline">262</span>
             </div>
@@ -1116,7 +1120,7 @@
           </button>
         </div>
       </div>
-    </div>
+    </main>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

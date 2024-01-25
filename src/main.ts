@@ -30,14 +30,14 @@ elements.forEach((element) => {
     currentAtom.orbits.forEach((orbit) => scene.add(orbit));
     currentAtom.nucleus.forEach((particle) => scene.add(particle));
     controls.minDistance = currentAtom.nucleusRadius + 2;
-    controls.maxDistance = currentAtom.maxOrbitRadius * 2;
-    camera.position.normalize().multiplyScalar(currentAtom.maxOrbitRadius * 1.5);
+    controls.maxDistance = currentAtom.maxOrbitRadius * 3;
+    camera.position.normalize().multiplyScalar(currentAtom.maxOrbitRadius * 2.5);
   });
 });
 
 controls.minDistance = currentAtom.nucleusRadius + 2;
-controls.maxDistance = currentAtom.maxOrbitRadius * 2;
-camera.position.setY(currentAtom.maxOrbitRadius * 1.5);
+controls.maxDistance = currentAtom.maxOrbitRadius * 3;
+camera.position.setY(currentAtom.maxOrbitRadius * 2.5);
 
 currentAtom.shells.forEach((shell) => shell.forEach((electron) => scene.add(electron)));
 currentAtom.orbits.forEach((orbit) => scene.add(orbit));

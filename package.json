@@ -20,6 +20,7 @@
   "dependencies": {
     "@types/three": "^0.155.0",
     "gl-matrix": "^3.4.3",
+    "tailwind-scrollbar": "^3.0.5",
     "three": "^0.158.0",
     "vite-tsconfig-paths": "^4.2.0"
   }
