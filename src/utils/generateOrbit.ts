@@ -2,7 +2,7 @@ import { RIGHT, UP } from "@/constants";
 import * as THREE from "three";
 import { degToRad } from "three/src/math/MathUtils";
 
-export default function generateOrbit(distance: number, resloution = 600) {
+export default function generateOrbit(distance: number, resloution = 100) {
 	const points = [];
 	for (let j = 0; j < resloution; j++)
 		points.push(
