@@ -20,6 +20,8 @@ tableToggle?.addEventListener("click", () => {
 
 elements.forEach((element) => {
   element.addEventListener("click", () => {
+      isTableVisible = false;
+      table?.setAttribute("data-visible", String(isTableVisible));
     currentAtom.shells.forEach((shell) => shell.forEach((electron) => scene.remove(electron)));
     currentAtom.orbits.forEach((orbit) => scene.remove(orbit));
     currentAtom.nucleus.forEach((particle) => scene.remove(particle));
@@ -36,7 +38,7 @@ elements.forEach((element) => {
 });
 
 controls.minDistance = currentAtom.nucleusRadius + 2;
-controls.maxDistance = currentAtom.maxOrbitRadius * 3;
+controls.maxDistance = currentAtom.maxOrbitRadius * 2.5;
 camera.position.setY(currentAtom.maxOrbitRadius * 2.5);
 
 currentAtom.shells.forEach((shell) => shell.forEach((electron) => scene.add(electron)));
